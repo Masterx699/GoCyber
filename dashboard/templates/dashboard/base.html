@@ -1,0 +1,73 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Secure Access Gateway</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div style="display: none">{% csrf_token %}</div>
+    <canvas id="matrixCanvas"></canvas>
+
+    <div class="terminal-container">
+      <div class="terminal-header">
+        <span class="btn close"></span>
+        <span class="btn minimize"></span>
+        <span class="btn maximize"></span>
+        <span class="title">root@ubuntu-server:~</span>
+      </div>
+
+      <div class="terminal-body" id="terminal-body">
+        <div id="static-text">
+          <pre
+            style="
+              font-size: 11px;
+              line-height: 12px;
+              margin-bottom: 20px;
+              text-shadow: 0 0 5px #0f0;
+            "
+          >
+ ███   ███   ███  █   █ ████  █████ ████    
+█ ░░░ █ ░░█ █ ░░░  █ █ ░█░░░█ █░░░░░█░░░█   
+█░ ██░█░ ░█░█░ ░░░  █ ░ ████░░████░░████░░  
+█░░ █░█░░ █░█░░     █░ ░█░░░█ █░░░░ █░░█░ ░ 
+ ███ ░░███ ░░███    █░░ ████░░█████░█░░░█░  
+  ░░░ ░ ░░░ ░ ░░░    ░░  ░░░░ ░░░░░░ ░░  ░  
+   ░░░   ░░░   ░░░    ░   ░░░░  ░░░░░ ░   ░ 
+</pre
+          >
+          > SYSTEM DESCRIPTION<br />
+          Website ini mengintegrasikan FrontEnd dan BackEnd dengan Model ML
+          (Supervised Learning Classification).<br />
+          Tujuan Utama: Menebak tipe serangan siber dari 5 parameter
+          jaringan.<br />
+          <br />
+          > STATUS: <strong>LOCKED</strong><br />
+          Harap masukkan security key untuk mendapatkan akses.<br />
+          (Usage: <span style="color: #ffbd2e">auth {key}</span>)<br /><br />
+        </div>
+
+        <div id="command-history"></div>
+
+        <div
+          class="input-line"
+          id="input-line"
+          style="display: block; margin-top: 10px"
+        >
+          <span class="prompt">root@ubuntu-server:~# </span>
+          <input
+            type="text"
+            id="cmd-input"
+            autocomplete="off"
+            spellcheck="false"
+            autofocus
+          />
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>

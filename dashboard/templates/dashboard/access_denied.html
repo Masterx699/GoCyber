@@ -1,0 +1,35 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>403 - Security Alert</title>
+    <link rel="stylesheet" href="{% static 'css/access_denied.css' %}" />
+  </head>
+  <body>
+    <div class="error-container">
+      <pre>
+█   █  ███  ████  █   █ ███ █   █  ███     █ █ █   
+█░  █░█ ░░█ █░░░█ ██  █░ █░░██  █░█ ░░░    █░█░█░  
+█░█ █░█████░████░░█░█ █░░█░░█░█ █░█░ ██░   █░█░█░░ 
+██░██░█░░░█░█░░█░ █░░██░░█░░█░░██░█░░ █░    ░░░░░░ 
+█░░ █░█░░░█░█░░░█░█░░ █░███░█░░ █░░███ ░░  █ █ █ ░ 
+ ░░░ ░░░░  ░░░░  ░ ░░  ░░░░░ ░░  ░░ ░░░ ░   ░ ░ ░  
+  ░   ░ ░   ░ ░   ░ ░   ░ ░░░ ░   ░  ░░░     ░ ░ ░ 
+</pre
+      >
+      <h2>[ CODE 403: ACCESS_DENIED ]</h2>
+      <p>
+        Deteksi Sistem: Pelanggaran Hak Akses.<br />
+        Payload enkripsi tidak ditemukan pada sesi jaringan Anda. Harap kembali
+        ke terminal utama dan masukkan security key yang valid untuk melakukan
+        dekripsi modul.
+      </p>
+
+      <a href="{% url 'home' %}" class="back-btn"
+        >< RE-INITIALIZE CONNECTION ></a
+      >
+    </div>
+  </body>
+</html>

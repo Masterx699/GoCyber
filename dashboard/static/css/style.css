@@ -1,0 +1,134 @@
+/* Reset dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  color: #0f0; /* Hijau neon */
+  font-family: "Courier New", Courier, monospace;
+  overflow: hidden; /* Biar canvas gak bikin scrollbar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Canvas Matrix di belakang */
+#matrixCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.8;
+}
+
+/* Desain Jendela Terminal */
+.terminal-container {
+  position: relative;
+  z-index: 1;
+  width: 80%;
+  max-width: 800px;
+  height: 500px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid #0f0;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Terminal (Tombol Merah, Kuning, Hijau) */
+.terminal-header {
+  background: #111;
+  padding: 10px;
+  border-bottom: 1px solid #0f0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.terminal-header .btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.close {
+  background: #ff5f56;
+}
+.minimize {
+  background: #ffbd2e;
+}
+.maximize {
+  background: #27c93f;
+}
+
+.terminal-header .title {
+  color: #0f0;
+  margin-left: 20px;
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+/* Isi Terminal */
+.terminal-body {
+  padding: 20px;
+  flex-grow: 1;
+  overflow-y: auto;
+  font-size: 1.1em;
+  line-height: 1.6;
+  text-shadow: 0 0 5px #0f0;
+}
+
+.input-line {
+  margin-top: 10px;
+  display: none; /* Disembunyikan sampai efek ngetik selesai */
+}
+
+/* Animasi Kursor Berkedip */
+.cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ... kode sebelumnya sama ... */
+
+/* Menyembunyikan input line awal sampai boot selesai */
+#input-line {
+  display: none;
+  margin-top: 10px;
+}
+
+/* Styling form input agar terlihat seperti CLI */
+#cmd-input {
+  background: transparent;
+  border: none;
+  color: #0f0;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1em; /* Mengikuti ukuran teks induk */
+  outline: none;
+  width: 60%;
+  text-shadow: 0 0 5px #0f0;
+}
+
+/* Biar kursor di input teks warnanya hijau neon juga */
+#cmd-input::selection {
+  background: #0f0;
+  color: #000;
+}

@@ -1,0 +1,130 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistem Prediksi Serangan</title>
+    <style>
+      body {
+        background-color: #000;
+        color: #0f0;
+        font-family: "Courier New", Courier, monospace;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .form-container {
+        border: 1px solid #0f0;
+        padding: 30px;
+        box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+        width: 400px;
+        background: rgba(0, 0, 0, 0.9);
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 0.9em;
+      }
+      input[type="text"],
+      input[type="number"] {
+        width: 100%;
+        background: transparent;
+        border: 1px solid #0f0;
+        color: #0f0;
+        padding: 8px;
+        font-family: "Courier New", Courier, monospace;
+        outline: none;
+      }
+      input:focus {
+        box-shadow: 0 0 8px #0f0;
+      }
+      button {
+        width: 100%;
+        background: #0f0;
+        color: #000;
+        border: none;
+        padding: 10px;
+        font-weight: bold;
+        font-family: "Courier New", Courier, monospace;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      button:hover {
+        background: #fff;
+        color: #000;
+      }
+      .result-box {
+        margin-top: 20px;
+        border-top: 1px dashed #0f0;
+        padding-top: 15px;
+      }
+      .back-link {
+        display: block;
+        margin-top: 15px;
+        text-align: center;
+        color: #0f0;
+        text-decoration: none;
+        font-size: 0.8em;
+      }
+      .back-link:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>> INJECT_PARAMETERS</h2>
+      <p>Awaiting 5 input variables...</p>
+
+      <form method="POST" action="{% url 'predict' %}">
+        {% csrf_token %}
+
+        <div class="form-group">
+          <label>Parameter 1 (Source Port):</label>
+          <input type="number" step="any" name="param1" required />
+        </div>
+
+        <div class="form-group">
+          <label>Parameter 2 (Destination Port):</label>
+          <input type="number" step="any" name="param2" required />
+        </div>
+
+        <div class="form-group">
+          <label>Parameter 3 (Packet Length):</label>
+          <input type="number" step="any" name="param3" required />
+        </div>
+
+        <div class="form-group">
+          <label>Parameter 4 (TCP Flags):</label>
+          <input type="number" step="any" name="param4" required />
+        </div>
+
+        <div class="form-group">
+          <label>Parameter 5 (Duration):</label>
+          <input type="number" step="any" name="param5" required />
+        </div>
+
+        <button type="submit">EXECUTE_SCAN()</button>
+      </form>
+
+      {% if hasil_prediksi %}
+      <div class="result-box">
+        <p><strong>[ SYSTEM RESPONSE ]</strong></p>
+        <p>Status: {{ status }}</p>
+        <p style="color: #ff5f56">Output: {{ hasil_prediksi }}</p>
+        <p style="font-size: 0.8em; opacity: 0.7">
+          Data In: {{ parameter_masuk }}
+        </p>
+      </div>
+      {% endif %}
+
+      <a href="{% url 'home' %}" class="back-link">< Return to Root Terminal</a>
+    </div>
+  </body>
+</html>
